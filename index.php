@@ -78,12 +78,6 @@
         </div>
       </li>
 
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="login.html">
-          <center><i class="fa fa-sign-out-alt fa-rotate-180 "></i><span>Logout</span></center></a>
-          
-      </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -127,6 +121,88 @@
 
       </div>
       <!-- End of Main Content -->
+
+       <!-- Start of Main Content -->
+      <h1 class="h3 mb-4 text-gray-800 text-center">Dashboard</h1>
+            <div class="row-inline">
+                <div class="flex-container">
+                    <div class="card mb-5" style="border-radius: 10px; width:30%; margin-left:360px; margin-bottom:20px;">
+                    <div class="card-body " style="
+                        box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.25);
+                        border-radius:10px;">
+                        <div class="row align-items-start">
+                            <div class="col" style="width: 25%; margin-left:0px">
+                                <img class="img" style="width:150%;" src="img/properti.png"/>
+
+                            </div>
+                            <div class="col text-gray-800" style="width:80%; margin-left:10px; margin-right:35px;margin-top:30px; line-height:2px;">
+                                <h4 class="mt-1"><p >Rp.250.000</p></h4>
+                                <p>Total Penyewaan</p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    
+
+                    <div class="container">
+                    <div class="row align-items-start">
+
+                    <div class="col">
+                    <div class="card mb-4" style="border-radius: 5px; width:30%;  margin-left:10px;">
+                    <div class="card-body" style="
+                        box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.25);
+                        border-radius: 10px;">
+                        <div class="row align-items-start">
+                        <div class="col" style="width: 10%; margin-left:2px">
+                                <img class="img" style="width:160%; margin-top:20px;" src="img/laporanrinci.png"/>
+
+                            </div>
+                            <div class="col text-gray-800" style="width:90%; margin-left:10px; margin-right:30px;margin-top:10px;">
+                                <h4 class="mt-2"><p >Rp.250.000</p></h4>
+                                <p>Laporan Terperinci</p>
+                            </div>
+                        </div>
+                    </div></div>
+
+                    <div class="col">
+                    <div class="card mb-5" style="border-radius: 10px; width:30%;  margin-left:340px;">
+                    <div class="card-body" style="
+                        box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.25);
+                        border-radius: 10px;">
+                        <div class="row align-items-start">
+                        <div class="col" style="width: 25%; margin-left:0px">
+                                <img class="img" style="width:100%; margin-left:5px; margin-top:20px;" src="img/laporansub.png"/>
+
+                            </div>
+                            <div class="col text-gray-800" style="width:100%; margin-left:10px; margin-right:30px;margin-top:10px;">
+                                <h4 class="mt-2"><p >Rp.250.000</p></h4>
+                                <p>Laporan Persubitem</p>
+                            </div>
+                        </div>
+                    </div></div>
+
+                    <div class="col">
+                    <div class="card mb-5" style="border-radius: 10px; width:30%;  margin-left:340px;">
+                    <div class="card-body" style="
+                        box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.25);
+                        border-radius: 10px;">
+                        <div class="row align-items-start">
+                        <div class="col" style="width: 25%; margin-left:0px">
+                                <img class="img" style="width:150%; margin-top:20px;" src="img/laporanseluruh.png"/>
+
+                            </div>
+                            <div class="col text-gray-800" style="width:90%; margin-left:10px; margin-right:30px;margin-top:10px;">
+                                <h4 class="mt-2"><p >Rp.250.000</p></h4>
+                                <p>Laporan Keseluruhan</p>
+                            </div>
+                        </div>
+                    </div></div>
+</div>
+</div>
+
+                </div>
+            </div>
+    </div>
 
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
