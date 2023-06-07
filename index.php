@@ -51,7 +51,7 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link" href="?url=penyewaan">
+        <a class="nav-link" href="?url=tambah_data_penyewaan">
           <i class="fas fa-plus"></i>
           <span>Penyewaan</span>
         </a>
