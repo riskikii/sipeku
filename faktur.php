@@ -1,61 +1,48 @@
+FAKTUR
+
 <body>
     <div class="card shadow">
         <div class="card-header">
         <h1 class="h3 mb-4 text-gray-800">SKRD dan Faktur</h1>
-            <br>
-            <div class="row">
-                <div class="col-sm-8">
-                </div>
-                <div class="col-sm-4">
-                    <form action="?url=surat_keputusan" method="post">
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="find_nip" name="find_nip" placeholder="Cari pegawai berdasarkan NIP...">
-                                </div>
-                                <div class="col-sm-4">
-                                    <button type="submit" name="search_nip" class="border-0">
-                                        <div class="btn btn-primary btn-icon-split">
-                                            <span class="icon text-white-50">
-                                                <i class="fas fa-search"></i>
-                                            </span>
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
         </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Tgl Pemakaian</th>
 
-                            <th>Fasilitas yang digunakan</th>
-                            <th>Vol</th>
-                            <th>Harga</th>
-                            <th>jumlah</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                    ?>
-                                <tr>
-                                    <td>1</td>
-                                    <td>12 April 2023</td>
-                                    <td>Sewa Cafe Musiman GOR H Agus Salim</td>
-                                    <td>115</td>
-                                    <td>Rp.8.000</td>
-                                    <td>Rp.920.000</td>
-                                    <td><center><p style ="background-color:blue;">belum bayar</p></center></td>
-                                    <td>
+        <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead align="center">
+                    <tr>
+                        <th>No</th>
+                        <th>Tgl Pemakaian</th>
+                        <th>Fasilitas</th>
+                        <th>Vol</th>
+                        <th>Harga</th>
+                        <th>Jumlah</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tfoot  align="center">
+                    <tr>
+                        <th>No</th>
+                        <th>Tgl Pemakaian</th>
+                        <th>Fasilitas</th>
+                        <th>Vol</th>
+                        <th>Harga</th>
+                        <th>Jumlah</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    <tr>
+                      <td><center>1</center></td>
+                      <td>System Architect</td>
+                      <td>Edinburgh</td>
+                      <td>61</td>
+                      <td>2011/04/25</td>
+                      <td>$320,800</td>
+                      <td><center><p style ="background-color:blue;">belum bayar</p></center></td>
+                                    <td><center>
                                         <a href="print_surat_keterangan.php?nip=<?php echo $data['nip']; ?>" class="btn btn-success btn-icon-split">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-print"></i>
@@ -70,17 +57,39 @@
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-trash"></i>
                                             </span>
-                                        </a>
+                                        </a></center>
                                     </td>
-                                </tr>
-                        
-                            <?php
-                        
-                        ?>
-                    </tbody>
+                    </tr>
+                    <tr>
+                      <td><center>2</center></td>
+                      <td>Accountant</td>
+                      <td>Tokyo</td>
+                      <td>63</td>
+                      <td>2011/07/25</td>
+                      <td>$170,750</td>
+                      <td><center><p style ="background-color:blue;">belum bayar</p></center></td>
+                                    <td><center>
+                                        <a href="print_surat_keterangan.php?nip=<?php echo $data['nip']; ?>" class="btn btn-success btn-icon-split">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-print"></i>
+                                            </span>
+                                        </a>
+                                        <a href="?url=edit_data&nip=<?php echo $data['nip']; ?>" class="btn btn-warning btn-icon-split">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-edit"></i>
+                                            </span>
+                                        </a>
+                                        <a href="#" onclick="confirmDelete(<?php echo $data['nip']; ?>)" class="btn btn-danger btn-icon-split">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-trash"></i>
+                                            </span>
+                                        </a></center>
+                                    </td>
+                    </tr>
+                  </tbody>
                 </table>
+              </div>
             </div>
-        </div>
     </div>
 </body>
 
