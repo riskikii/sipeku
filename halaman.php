@@ -25,6 +25,14 @@ if (isset($_GET['url'])){
         case 'lap_keseluruhan':
             include 'lap_keseluruhan.php';
         break;
+
+        case 'tambah_data_penyewaan':
+            include 'tambah_data_penyewaan.php';
+        break;
+
+        case 'edit_data_penyewaan':
+            include 'edit_data_penyewaan.php';
+        break;
     }
 }
 
