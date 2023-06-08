@@ -1,5 +1,3 @@
-FAKTUR
-
 <body>
     <div class="card shadow">
         <div class="card-header">
