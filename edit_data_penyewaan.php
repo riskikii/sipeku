@@ -27,6 +27,7 @@
         $penyetor = $_POST['penyetor'];
         $referensi = $_POST['referensi'];
         $nilai = $_POST['nilai'];
+        $satuan = $_POST['volume'];
 
         $wp->editPenyewaan(
             $idTransaksi,
@@ -34,6 +35,7 @@
             $tanggal,
             $penyetor,
             $referensi,
+            $satuan,
             $nilai
         );
     }
@@ -75,15 +77,21 @@
                     </div>
                     <div class="form-row">
                         <input type="hidden" name="id_transaksi" value="<?php echo $class['id_transaksi'] ?>">
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6">
                             <label for="inputEmail4">Tanggal Penyewaan</label>
                             <input required type="date" class="form-control" id="tanggal_penyewaan" name="tanggal_penyewaan" value="<?php echo $class['tanggal'] ?>">
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6">
                             <label for="inputPassword4">Nama Penyetor</label>
                             <input required type="text" class="form-control" id="penyetor" name="penyetor" value="<?php echo $class['penyetor'] ?>">
                         </div>
-                        <div class="form-group col-md-4">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">Satuan</label>
+                            <input required type="text" class="form-control" id="volume" name="volume" value="<?php echo $class['volume'] ?>">
+                        </div>
+                        <div class="form-group col-md-6">
                             <label for="inputPassword4">Nilai</label>
                             <input required type="text" class="form-control" id="nilai" name="nilai" value="<?php echo $class['nilai'] ?>">
                         </div>
@@ -96,7 +104,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-success" name="submit">Perbaharui</button>
-                    <a type="button" class="btn btn-danger" href="?url=penyewaan">Batal</a>
+                    <a type="button" class="btn btn-danger" href="?url=faktur">Batal</a>
                 </form>
             </div>
         </div>

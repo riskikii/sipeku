@@ -7,7 +7,7 @@ if (isset($_GET['url'])){
             include 'dashboard.php';
         break;
         case 'penyewaan':
-            include 'penyewaan.php';
+            include 'tambah_data_penyewaan.php';
         break;
 
         case 'faktur':
@@ -35,5 +35,3 @@ if (isset($_GET['url'])){
         break;
     }
 }
-
-?>

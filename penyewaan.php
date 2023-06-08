@@ -23,7 +23,7 @@
                         </span>
                         Tambah Data Penyewaan
                     </a>
-                    <a href="cetak_data_penyewaan.php" class="btn btn-info">
+                    <a href="lap_keseluruhan.php" class="btn btn-info">
                         <span class="icon text-white-50">
                             <i class="fas fa-print"></i>
                         </span>
