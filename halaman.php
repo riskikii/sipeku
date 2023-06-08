@@ -3,8 +3,11 @@ if (isset($_GET['url'])){
     $url=$_GET['url'];
 
     switch($url){
+        case 'dashboard':
+            include 'dashboard.php';
+        break;
         case 'penyewaan':
-            include 'penyewaan.php';
+            include 'tambah_data_penyewaan.php';
         break;
 
         case 'faktur':
@@ -32,5 +35,3 @@ if (isset($_GET['url'])){
         break;
     }
 }
-
-?>

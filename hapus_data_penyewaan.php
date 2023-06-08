@@ -10,7 +10,7 @@
 if ($_GET['id_penyewaan'] == null) {
     echo "
     <script>
-    window.location.assign('./?url=penyewaan')
+    window.location.assign('./?url=faktur')
     </script>
     ";
 }
@@ -38,7 +38,7 @@ try {
                 confirmButtonText: 'Kembali'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.replace('./?url=penyewaan')
+                    window.location.replace('./?url=faktur')
                 }
             })
         </script>

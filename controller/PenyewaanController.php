@@ -38,12 +38,12 @@ class PenyewaanController
         return $this->fetch($stmt);
     }
 
-    public function inputPenyewaan($idRetri, $tanggal, $penyetor, $referensi, $nilai)
+    public function inputPenyewaan($idRetri, $tanggal, $penyetor, $referensi, $satuan, $nilai)
     {
         try {
-            $sqlDataPenyewaan = "INSERT INTO transaksi (id_retri, tanggal, penyetor, referensi, nilai) VALUES (?, ?, ?, ?, ?)";
+            $sqlDataPenyewaan = "INSERT INTO transaksi (id_retri, tanggal, penyetor, referensi, volume, nilai) VALUES (?, ?, ?, ?, ?, ?)";
             $stmtDataPenyewaan = $this->db->prepare($sqlDataPenyewaan);
-            $stmtDataPenyewaan->execute([$idRetri, $tanggal, $penyetor, $referensi, $nilai]);
+            $stmtDataPenyewaan->execute([$idRetri, $tanggal, $penyetor, $referensi, $satuan, $nilai]);
 
             echo "
                 <script src='js/sweetalert/sweetalert2@11.js'></script>
@@ -57,7 +57,7 @@ class PenyewaanController
                             confirmButtonText: 'Kembali'
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                window.location.assign('./?url=penyewaan')
+                                window.location.assign('./?url=faktur')
                             }
                         })
                 </script>
@@ -67,18 +67,20 @@ class PenyewaanController
         }
     }
 
-    public function editPenyewaan($idTransaksi, $idRetri, $tanggal, $penyetor, $referensi, $nilai)
+    public function editPenyewaan($idTransaksi, $idRetri, $tanggal, $penyetor, $referensi, $satuan, $nilai)
     {
 
         if ($idTransaksi == null) {
-            header('location:?url=penyewaan');
+            header('location:?url=faktur');
         }
 
         try {
-            $sqlDataPegawai = "UPDATE transaksi SET id_retri = ?, tanggal = ?, penyetor = ?, referensi = ?, nilai = ? WHERE id_transaksi = '$idTransaksi'";
+            $sqlDataPegawai = "UPDATE transaksi SET id_retri = ?, tanggal = ?, penyetor = ?, referensi = ?, volume = ?, nilai = ? WHERE id_transaksi = '$idTransaksi'";
             $stmtDataPegawai = $this->db->prepare($sqlDataPegawai);
-            $stmtDataPegawai->execute([$idRetri, $tanggal, $penyetor, $referensi, $nilai]);
-            echo "
+            $stmtDataPegawai->execute([$idRetri, $tanggal, $penyetor, $referensi, $satuan, $nilai]);
+
+            if ($stmtDataPegawai) {
+                echo "
                 <script src='js/sweetalert/sweetalert2@11.js'></script>
                 <script>
                     Swal.fire({
@@ -90,11 +92,12 @@ class PenyewaanController
                             confirmButtonText: 'Kembali'
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                window.location.assign('./?url=penyewaan')
+                                window.location.assign('./?url=faktur&after_edit=true')
                             }
                         })
                 </script>
                 ";
+            }
         } catch (\Throwable $th) {
             echo "Error! " . $th;
         }
@@ -106,6 +109,20 @@ class PenyewaanController
             $sqlDataPenyewaan = "DELETE FROM transaksi WHERE id_transaksi = ?";
             $stmtDataPenyewaan = $this->db->prepare($sqlDataPenyewaan);
             $stmtDataPenyewaan->execute([$idTransaksi]);
+        } catch (\Throwable $th) {
+            echo "Error! " . $th;
+        }
+    }
+
+    public function laporanKeseluruhanPenyewaan($year)
+    {
+        try {
+            // $sqlLaporanKeseluruhan = "SELECT SUM(nilai), SUM(total), MONTH(tanggal), YEAR(tanggal) FROM transaksi WHERE YEAR(tanggal) = ? GROUP BY MONTH(tanggal), YEAR(tanggal) ORDER BY MONTH(tanggal) ASC;";
+            $sqlLaporanKeseluruhan = "SELECT SUM(nilai), SUM(total), MONTH(tanggal), YEAR(tanggal), id_retri FROM transaksi WHERE YEAR(tanggal) = ? GROUP BY MONTH(tanggal), YEAR(tanggal), id_retri ORDER BY MONTH(tanggal) ASC";
+            $stmtLaporanKeseluruhan = $this->db->prepare($sqlLaporanKeseluruhan);
+            $stmtLaporanKeseluruhan->execute([$year]);
+
+            return $this->fetch($stmtLaporanKeseluruhan);
         } catch (\Throwable $th) {
             echo "Error! " . $th;
         }

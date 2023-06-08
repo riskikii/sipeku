@@ -1,11 +1,13 @@
+FAKTUR
+
 <body>
     <div class="card shadow">
         <div class="card-header">
-        <h1 class="h3 mb-4 text-gray-800">SKRD dan Faktur</h1>
+            <h1 class="h3 mb-4 text-gray-800">SKRD dan Faktur</h1>
         </div>
 
         <div class="card-body">
-              <div class="table-responsive">
+            <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead align="center">
                     <tr>
@@ -92,8 +94,8 @@
                         <?php } ?>
                     </tbody>
                 </table>
-              </div>
             </div>
+        </div>
     </div>
 </body>
 
