@@ -3,6 +3,9 @@ if (isset($_GET['url'])){
     $url=$_GET['url'];
 
     switch($url){
+        case 'dashboard':
+            include 'dashboard.php';
+        break;
         case 'penyewaan':
             include 'tambah_data_penyewaan.php';
         break;
