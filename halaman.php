@@ -33,5 +33,8 @@ if (isset($_GET['url'])){
         case 'edit_data_penyewaan':
             include 'edit_data_penyewaan.php';
         break;
+        case 'print_lap_rinci':
+            include 'print_lap_rinci.php';
+        break;
     }
 }

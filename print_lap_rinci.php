@@ -20,7 +20,7 @@
                         <th colspan="5">Bulan Ini</th>      
                         <th colspan="1">Rp. 213122</th>                 
                     </tr>
-                    <tr>
+                    <tr align="center">
                         <th>No Bukti</th>
                         <th>Tanggal Penyetor</th>
                         <th>Penyetor</th>

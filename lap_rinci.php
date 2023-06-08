@@ -1,14 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <!-- Header -->
-    <h1 class="h3 mb-4 text-gray-800">Laporan Rinci</h1>
+<div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="mb-3">Tambah Data Penyewaan</h3>
+                <form method="POST" action="?url=tambah_data_penyewaan">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Dari Tanggal</label>
+                            <input type="date" class="form-control" id="dari_tanggal" name="dari_tanggal">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">Sampai Tanggal</label>
+                            <input type="date" class="form-control" id="sampai_tanggal" name="sampai_tanggal">
+                        </div>
+                    </div>
 
-</body>
-</html>
+                    <a type="button" class="btn btn-success" name="submit" href="?url=print_lap_rinci">Cari</a>
+                    <a type="button" class="btn btn-danger" href="index.php">Batal</a>
+                </form>
+            </div>
+        </div>
+    </div>
