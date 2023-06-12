@@ -31,6 +31,14 @@ class PenyewaanController
         return $this->fetch($stmt);
     }
 
+
+    public function getListofPemungut()
+    {
+        $stmt = $this->db->prepare("SELECT * FROM pemungut");
+        $stmt->execute();
+        return $this->fetch($stmt);
+    }
+
     public function getDataPenyewaan($id)
     {
         $stmt = $this->db->prepare("SELECT * FROM transaksi WHERE id_transaksi = '$id'");
@@ -38,12 +46,12 @@ class PenyewaanController
         return $this->fetch($stmt);
     }
 
-    public function inputPenyewaan($idRetri, $tanggal, $penyetor, $referensi, $satuan, $nilai)
+    public function inputPenyewaan($idRetri, $idKategoriRetribusi, $idSubKategoriRetribusi, $tanggal, $penyetor, $referensi, $satuan, $detailVolume, $nilai)
     {
         try {
-            $sqlDataPenyewaan = "INSERT INTO transaksi (id_retri, tanggal, penyetor, referensi, volume, nilai) VALUES (?, ?, ?, ?, ?, ?)";
+            $sqlDataPenyewaan = "INSERT INTO transaksi (id_retri, id_kategori_retribusi, id_sub_kategori_retribusi, penyetor, referensi, volume, detail_volume, nilai) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             $stmtDataPenyewaan = $this->db->prepare($sqlDataPenyewaan);
-            $stmtDataPenyewaan->execute([$idRetri, $tanggal, $penyetor, $referensi, $satuan, $nilai]);
+            $stmtDataPenyewaan->execute([$idRetri, $idKategoriRetribusi, $idSubKategoriRetribusi, $penyetor, $referensi, $satuan, $detailVolume, $nilai]);
 
             echo "
                 <script src='js/sweetalert/sweetalert2@11.js'></script>
@@ -67,7 +75,7 @@ class PenyewaanController
         }
     }
 
-    public function editPenyewaan($idTransaksi, $idRetri, $tanggal, $penyetor, $referensi, $satuan, $nilai)
+    public function editPenyewaan($idTransaksi, $idRetri, $idKategoriRetribusi, $idSubKategoriRetribusi = 0, $tanggal, $penyetor, $referensi, $satuan, $detailVolume, $nilai)
     {
 
         if ($idTransaksi == null) {
@@ -75,9 +83,9 @@ class PenyewaanController
         }
 
         try {
-            $sqlDataPegawai = "UPDATE transaksi SET id_retri = ?, tanggal = ?, penyetor = ?, referensi = ?, volume = ?, nilai = ? WHERE id_transaksi = '$idTransaksi'";
+            $sqlDataPegawai = "UPDATE transaksi SET id_retri = ?, id_kategori_retribusi = ?, id_sub_kategori_retribusi = ?, tanggal = ?, penyetor = ?, referensi = ?, volume = ?, detail_volume = ?, nilai = ? WHERE id_transaksi = '$idTransaksi'";
             $stmtDataPegawai = $this->db->prepare($sqlDataPegawai);
-            $stmtDataPegawai->execute([$idRetri, $tanggal, $penyetor, $referensi, $satuan, $nilai]);
+            $stmtDataPegawai->execute([$idRetri, $idKategoriRetribusi, $idSubKategoriRetribusi, $tanggal, $penyetor, $referensi, $satuan, $detailVolume, $nilai]);
 
             if ($stmtDataPegawai) {
                 echo "
@@ -123,6 +131,20 @@ class PenyewaanController
             $stmtLaporanKeseluruhan->execute([$year]);
 
             return $this->fetch($stmtLaporanKeseluruhan);
+        } catch (\Throwable $th) {
+            echo "Error! " . $th;
+        }
+    }
+
+    public function laporanPenyewaanPerItem()
+    {
+        try {
+            $sqlLaporanPerItem = "SELECT kategori_retribusi.id_kategori_retribusi, sub_kategori_retribusi.id_sub_kategori_retribusi, SUM(nilai), MONTH(tanggal_input), kategori_retribusi.nama_kategori_retribusi, sub_kategori_retribusi.nama_sub_kategori_retribusi FROM transaksi JOIN jenis_retribusi ON transaksi.id_retri = jenis_retribusi.id_retribusi JOIN kategori_retribusi ON transaksi.id_kategori_retribusi = kategori_retribusi.id_kategori_retribusi JOIN sub_kategori_retribusi ON transaksi.id_sub_kategori_retribusi = sub_kategori_retribusi.id_sub_kategori_retribusi GROUP BY MONTH(tanggal_input) ORDER BY transaksi.id_kategori_retribusi ASC;";
+
+            $stmtLaporanPerItem = $this->db->prepare($sqlLaporanPerItem);
+            $stmtLaporanPerItem->execute();
+
+            return $this->fetch($stmtLaporanPerItem);
         } catch (\Throwable $th) {
             echo "Error! " . $th;
         }
